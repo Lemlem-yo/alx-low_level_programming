@@ -9,8 +9,8 @@ int _islower(int c)
 	int counter = 0;
 
 	int n;
-	
-	for(n = 97; n <=122; n++)
+
+	for (n = 97; n <= 122; n++)
 	{
 		if (c == n)
 		{
@@ -18,7 +18,7 @@ int _islower(int c)
 			break;
 		}
 	}
-	if(counter == 0)
+	if (counter == 0)
 		return (0);
 	else
 		return (1);

@@ -1,6 +1,7 @@
 #include "main.h"
 /**
  * _islower(int c)- print only the lower letter passed on it.
+ * @c: the character to be evaluated as aplphabetic or not.
  *
  * Return: Exit point.
  */

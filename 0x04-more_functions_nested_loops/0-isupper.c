@@ -8,7 +8,6 @@
 int _isupper(int c)
 {
 	int upper;
-	
 	int count;
 
 	count = 0;

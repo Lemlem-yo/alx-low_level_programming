@@ -1,8 +1,8 @@
 #include <stdio.h>
 /**
   * main - print all command line with new line
-  * argc: the number of the arguments
-  * argv: the array that pass
+  * @argc: number of argument passed
+  * @argv: array of arguments
   * Return: 0
   */
 int main(int argc, char *argv[])

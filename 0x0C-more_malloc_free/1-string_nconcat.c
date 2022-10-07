@@ -1,51 +1,40 @@
 #include "main.h"
 #include <stdlib.h>
-
 /**
- * *string_nconcat - concatenate two strings
- * @n: number of characters printed
- * @s1: strinng for concatinating
- * @s2: strinng for concatinating
- * Return: a pointer to allocated memory
-*/
-
+  * string_nconcat - concatenates two strings
+  * @s1: first string
+  * @s2: second string
+  * @n: index
+  * Return: char pointer
+  */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-char *cat;
-unsigned int i = 0, j = 0, k = 0, l = 0;
+	char *a;
+	unsigned int str1 = 0, str2 = 0, i;
 
-while (s1 && s1[k])
-{
-k++;
-}
-while (s2 && s2[l])
-{
-l++;
-}
-if (n < l)
-{
-cat = malloc(sizeof(char) * (k + n + 1));
-}
-else
-{
-cat = malloc(sizeof(char) * (k + l + 1));
-}
-if (!cat)
-{
-return (NULL);
-}
-while (i < k)
-{
-cat[i] = s1[i];
-i++;
-}
-while (i < (k + n))
-{
-cat[i] = s2[j];
-i++;
-j++;
-}
-cat[i] = '\0';
-return (cat);
+	if (s1 == NULL)
+		s1 = "";
+	if (s2 == NULL)
+		s2 = "";
+	while (s1[str1] != '\0')
+		str1++;
+	while (s2[str2] != '\0')
+		str2++;
+	if (n > str2)
+		n = str2;
+	a = malloc((str1 + n + 1) * sizeof(char));
+	if (a == NULL)
+		return (NULL);
+	for (i = 0; i < str1; i++)
+	{
+		a[i] = s1[i];
+	}
+	for (; i < (str1 + n); i++)
+	{
+		a[i] = s2[i - str1];
+	}
+	a[i] = '\0';
+
+	return (a);
 
 }

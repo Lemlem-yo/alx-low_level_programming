@@ -1,52 +1,71 @@
+#include "dog.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "dog.h"
 
 /**
-  * new_dog - create new dog function
-  * @name: first parameter
-  * @age: second parameter
-  * @owner: third parameter
-  * Return: Null, pointer
-  */
+ * _strdup - returns a pointer to space in memory containing copy of string.
+ * @s: pointer to the string.
+ * Return: Pointer to a string stored in memory.
+ */
+char *_strdup(char *s)
+{
+	char *dup;
+	unsigned int i = 0;
+	unsigned int j = 0;
+
+	if (s == NULL)
+		return (NULL);
+/*Get the length of the string.*/
+	while (s[i] != '\0')
+		i += 1;
+/*+1 to include the terminating character in size.*/
+	i++;
+
+	dup = malloc(i * sizeof(*dup));
+	if (dup == NULL)
+		return (NULL);
+	while (j < i)
+	{
+		dup[j] = s[j];
+		j++;
+	}
+	return (dup);
+}
+
+
+
+
+/**
+ *new_dog - create an instance of struct dog.
+ *@name:firt argument.
+ *@age:second argument.
+ *@owner: Third argument.
+ *Return: instance of struct.
+ */
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	dog_t *new;
-	int i, j;
+	dog_t *newdog;
 
-	new = malloc(sizeof(dog_t));
-	if (new == NULL)
+	newdog = malloc(sizeof(struct dog));
+
+	if (newdog == NULL)
 		return (NULL);
-	for (i = 0; name[i]; i++)
-	{}
-	new->name = malloc((i + 1) * sizeof(char));
-
-	for (j = 0; owner[i]; j++)
-	{}
-	new->owner = malloc((j + 1) * sizeof(char));
-
-	if (new->name == NULL || new->owner == NULL)
+/*Assign name element of new struct to the copy of name.*/
+	newdog->name = _strdup(name);
+	if (newdog->name == NULL)
 	{
-		free(new->name);
-		free(new->owner);
-		free(new);
+		free(newdog);
 		return (NULL);
 	}
-	for (i = 0; name[i]; i++)
+/*Assgin owner element of new struct to the copy of ownwer.*/
+	newdog->owner = _strdup(owner);
+	if (newdog->owner == NULL)
 	{
-		new->name[i] = name[i];
-
+		free(newdog->name);
+		free(newdog);
+		return (NULL);
 	}
-	new->name = '\0';
+	newdog->age = age;
 
-	for (j = 0; owner[j]; j++)
-	{
-		new->owner[j] = owner[j];
-	}
-	new->owner = '\0';
-	new->age = age;
-	return (new);
-
-
-
+	return (newdog);
 }

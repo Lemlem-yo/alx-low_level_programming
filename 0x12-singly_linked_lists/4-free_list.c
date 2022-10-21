@@ -7,6 +7,8 @@ void free_list(list_t *head)
 {
 	list_t *ptr;
 
+	if (head == NULL)
+		return;
 	ptr = head;
 
 	while (ptr != NULL)

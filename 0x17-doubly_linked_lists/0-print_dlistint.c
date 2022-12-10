@@ -1,5 +1,5 @@
 #include "lists.h"
-/** 
+/**
   * print_dlistint - print elements for list
   * @h: head of list
   * Return: nodes

@@ -4,8 +4,8 @@
  * insert_dnodeint_at_index - function add node to specific location
  * @head: pointer to the node
  * @idx: integer for the index
- * @n: integer for the node data
- * Return: node
+ * @n: element value
+ * Return: NULL or new_node
  */
 dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
@@ -22,13 +22,7 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	new_node->prev = NULL;
 	new_node->n = n;
 	if (idx == 0)
-	{
-		new_node->next = *h;
-		if (*h != NULL)
-			(*h)->prev = new_node;
-		*h = new_node;
-		return (new_node);
-	}
+		return (add_dnodeint(h, n));
 
 	while (current != NULL)
 	{

@@ -1,4 +1,6 @@
 #include "hash_tables.h"
+#include <string.h>
+#include <stdlib.h>
 
 /**
  * hash_table_delete - delete a hash table
